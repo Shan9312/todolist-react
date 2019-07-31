@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react' // Fragment 占位符标签
 import './style.css'
+import ToDoItem from './ToDoItem'
 
 class ToDoList extends Component {
   // 每个类都要有 constructor 接受react的组件中的 props, super 继承
@@ -25,11 +26,19 @@ class ToDoList extends Component {
         <button onClick={this.handleClick.bind(this)}>提交</button>
       </div>
       <ul>
+
         {this.state.list.map((item, index) => {
-          return <li key={index}
-            onClick={this.handlDel.bind(this, index)}
-            dangerouslySetInnerHTML={{ __html: item }}
-          ></li>
+          return <div>
+            <ToDoItem
+              num={item}
+              index={index}
+              deleteTitem={this.handlDel.bind(this)}
+            />
+          </div>
+          // <li key={index}
+          //   onClick={this.handlDel.bind(this, index)}
+          //   dangerouslySetInnerHTML={{ __html: item }}
+          // ></li>
         })}
       </ul>
     </Fragment>)
