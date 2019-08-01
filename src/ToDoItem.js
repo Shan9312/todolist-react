@@ -8,13 +8,14 @@ class ToDoItem extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   render() {
+    const { num } = this.props
     return (
-      <div onClick={this.handleClick}>{this.props.num + '' + this.props.key}</div>
+      <div onClick={this.handleClick}>{num}</div>
     )
   }
-  handleClick(e) {
-    console.log(this.props);
-    this.props.deleteTitem(this.props.index);
+  handleClick() {
+    const { deleteTitem, index } = this.props;
+    deleteTitem(index);
   }
 
 }

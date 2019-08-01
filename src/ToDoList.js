@@ -10,6 +10,8 @@ class ToDoList extends Component {
       inputValue: '',
       list: ['learning', 'read book'],
     }
+    this.handleChangeInput = this.handleChangeInput.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   render() {
@@ -22,8 +24,8 @@ class ToDoList extends Component {
           id='insert'
           className='input'
           value={this.state.inputValue}
-          onChange={this.handleChangeInput.bind(this)} />
-        <button onClick={this.handleClick.bind(this)}>提交</button>
+          onChange={this.handleChangeInput} />
+        <button onClick={this.handleClick}>提交</button>
       </div>
       <ul>
 
@@ -35,10 +37,6 @@ class ToDoList extends Component {
               deleteTitem={this.handlDel.bind(this)}
             />
           </div>
-          // <li key={index}
-          //   onClick={this.handlDel.bind(this, index)}
-          //   dangerouslySetInnerHTML={{ __html: item }}
-          // ></li>
         })}
       </ul>
     </Fragment>)
