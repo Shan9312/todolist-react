@@ -7,6 +7,7 @@ class ToDoList extends Component {
   // 每个类都要有 constructor 接受react的组件中的 props, super 继承
   constructor(props) {
     super(props);
+    // 当组件的 state和props 改变时，就会重新执行render 函数
     this.state = {
       inputValue: '',
       list: ['learning', 'read book'],
@@ -17,6 +18,9 @@ class ToDoList extends Component {
   }
 
   render() {
+    console.log('执行了');
+    // 渲染原理： JSX语法——》createElement ——》 虚拟dom（js对象） ——》真实的Dom
+    // 优点：性能提升，之前是dom 对比，现在是js对象对比区别。性能大大提高
     return (<Fragment>
       <div>
         <h1>plan something</h1>

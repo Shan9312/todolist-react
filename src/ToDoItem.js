@@ -1,6 +1,7 @@
 import React, {
   Component
 } from 'react';
+import PropTypes from 'prop-types'  // 定义数据类型格式
 
 class ToDoItem extends Component {
   constructor(props) {
@@ -8,9 +9,9 @@ class ToDoItem extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   render() {
-    const { num } = this.props
+    const { num, text } = this.props
     return (
-      <div onClick={this.handleClick}>{num}</div>
+      <div onClick={this.handleClick}>{text}-{num}</div>
     )
   }
   handleClick() {
@@ -18,6 +19,15 @@ class ToDoItem extends Component {
     deleteTitem(index);
   }
 
+}
+ToDoItem.propTypes = {
+  text: PropTypes.string,
+  num: PropTypes.string,
+  deleteTitem: PropTypes.func,
+  index: PropTypes.number
+}
+ToDoItem.defaultProps = {
+  text: 'hello word'
 }
 
 export default ToDoItem;
