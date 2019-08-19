@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react' // Fragment 占位符标签
 import ToDoItem from './ToDoItem'
+// import axios from 'axios'
 import './style.css'
 
 
@@ -10,7 +11,7 @@ class ToDoList extends Component {
     // 当组件的 state和props 改变时，就会重新执行render 函数
     this.state = {
       inputValue: '',
-      list: ['learning', 'read book'],
+      list: ['shanshan'],
     }
     this.handleChangeInput = this.handleChangeInput.bind(this)
     this.handleClick = this.handleClick.bind(this)
@@ -22,7 +23,6 @@ class ToDoList extends Component {
     return (<Fragment>
       <div>
         <h1>plan something</h1>
-        {/* 下面是一个input框 */}
         <label htmlFor="insert">请输入内容</label>
         <input type="text"
           id='insert'
@@ -36,6 +36,20 @@ class ToDoList extends Component {
       </ul>
     </Fragment>)
   }
+
+  componentDidMount() {
+    // axios.get('/api/todolist').then((res) => {
+    //   console.log('发送请求')
+    // })
+    let data = ['daili', 'DAHua', 'Ceshi'];
+    this.setState(() => {
+      return {
+        list: [...data]
+      }
+    })
+
+  }
+
 
   getToDoItem() {
     return this.state.list.map((item, index) => {

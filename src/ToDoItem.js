@@ -27,7 +27,7 @@ ToDoItem.propTypes = {
   index: PropTypes.number
 }
 ToDoItem.defaultProps = {
-  text: 'hello word'
+  text: 'Doooly'
 }
 
 export default ToDoItem;
