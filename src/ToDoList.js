@@ -16,9 +16,7 @@ class ToDoList extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.handlDel = this.handlDel.bind(this)
   }
-
   render() {
-    console.log('执行了');
     // 渲染原理： JSX语法——》createElement ——》 虚拟dom（js对象） ——》真实的Dom
     // 优点：性能提升，之前是dom 对比，现在是js对象对比区别。性能大大提高
     return (<Fragment>
@@ -33,7 +31,7 @@ class ToDoList extends Component {
           onChange={this.handleChangeInput} />
         <button onClick={this.handleClick}>提交</button>
       </div>
-      <ul>
+      <ul ref={(ul) => { this.ul = ul }}>
         {this.getToDoItem()}
       </ul>
     </Fragment>)
@@ -60,10 +58,14 @@ class ToDoList extends Component {
   }
 
   handleClick() {
+    // setState是异步函数，连续多次执行时，setState会合并多个函数，并只回执行一次
     this.setState((prevState) => ({
       list: [...prevState.list, prevState.inputValue],
       inputValue: '',
-    }))
+    }), () => {
+      //ref, 为了保障能拿到dom节点，可以在setState后添加一个函数，保证dom渲染完成后执行
+      console.log(this.ul.querySelectorAll('div').length)
+    })
   }
 
   handlDel(index) {
